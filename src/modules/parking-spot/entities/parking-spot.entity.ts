@@ -1,7 +1,8 @@
 /* THIRD PARTY IMPORTS */
-import { Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
+import { BookingEntity } from 'src/modules/booking/entities/booking.entity';
 
 /* GLOBAL IMPORTS */
 
@@ -17,6 +18,16 @@ export class ParkingSpotEntity {
     name: 'id',
   })
   public id: number;
+
+  @ApiProperty()
+  @Column({
+    nullable: false,
+    name: 'name',
+  })
+  public name: string;
+
+  @OneToMany(() => BookingEntity, (booking) => booking.parkingSpot)
+  public bookings: BookingEntity[];
 
   @ApiProperty()
   @CreateDateColumn({
