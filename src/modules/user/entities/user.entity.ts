@@ -9,6 +9,7 @@ import {
 import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { BookingEntity } from 'src/modules/booking/entities/booking.entity';
+import { RoleEnum } from '../enum';
 
 /* GLOBAL IMPORTS */
 
@@ -51,13 +52,12 @@ export class UserEntity {
   public email: string;
 
   @ApiProperty()
-  @Index()
   @Column({
-    nullable: false,
-    name: 'email',
-    unique: true,
+    type: 'enum',
+    enum: RoleEnum,
+    default: RoleEnum.STANDARD,
   })
-  public role: string;
+  privacy: RoleEnum;
 
   @ApiProperty()
   @Column({
