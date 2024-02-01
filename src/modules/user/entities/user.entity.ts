@@ -57,7 +57,7 @@ export class UserEntity {
     enum: RoleEnum,
     default: RoleEnum.STANDARD,
   })
-  privacy: RoleEnum;
+  role: RoleEnum;
 
   @ApiProperty()
   @Column({

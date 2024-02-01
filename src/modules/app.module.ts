@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import typeorm from './config/database/typeorm.config';
 import { BookingModule } from './booking/booking.module';
 import { ParkingSpotModule } from './parking-spot/parking-spot.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ParkingSpotModule } from './parking-spot/parking-spot.module';
       useFactory: async (configService: ConfigService) =>
         configService.get('typeorm'),
     }),
+    AuthModule,
     UserModule,
     BookingModule,
     ParkingSpotModule,
