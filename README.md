@@ -47,6 +47,11 @@ After running migrations, the system will automatically create two users and a d
 - Permissions: Standard
 - API Token: Check the "token" column in the users table (not encrypted for simplicity).
 
+## Authentication
+
+- Each request should be done sending the following headers:
+  `api_token {token}`
+
 ## Parking Spot
 
 A default Parking Spot with ID 1 will be created.
