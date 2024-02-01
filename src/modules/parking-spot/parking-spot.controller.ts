@@ -9,7 +9,12 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  ApiForbiddenResponse,
+  ApiHeaders,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
 /* GLOBAL IMPORTS */
 
@@ -25,6 +30,12 @@ export class ParkingSpotController {
   constructor(private readonly parkingSpotService: ParkingSpotService) {}
 
   @Get(':id')
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async getParkingSpotById(
     @Param('id', ParseIntPipe) id: number,
   ): Promise<any> {
@@ -32,11 +43,23 @@ export class ParkingSpotController {
   }
 
   @Get()
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async getAllParkingSpots(@Auth() user: any): Promise<any[]> {
     return await this.parkingSpotService.getAllParkingSpots();
   }
 
   @Post()
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async createParkingSpot(
     @Auth() user: any,
     @Body() input: any,
@@ -45,6 +68,12 @@ export class ParkingSpotController {
   }
 
   @Put(':id')
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async editParkingSpotById(
     @Param('id', ParseIntPipe) id: number,
     @Body() input: any,
@@ -53,6 +82,12 @@ export class ParkingSpotController {
   }
 
   @Delete(':id')
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async deleteParkingSpotById(
     @Param('id', ParseIntPipe) id: number,
   ): Promise<any> {

@@ -2,9 +2,9 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { BookingEntity } from 'src/modules/booking/entities/booking.entity';
 
 /* GLOBAL IMPORTS */
+import { BookingEntity } from '../../booking/entities/booking.entity';
 
 /* LOCAL IMPORTS */
 

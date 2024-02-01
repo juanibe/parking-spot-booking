@@ -9,8 +9,8 @@ import {
 } from 'typeorm';
 import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { UserEntity } from 'src/modules/user/entities/user.entity';
-import { ParkingSpotEntity } from 'src/modules/parking-spot/entities/parking-spot.entity';
+import { UserEntity } from '../../user/entities/user.entity';
+import { ParkingSpotEntity } from '../../parking-spot/entities/parking-spot.entity';
 
 /* GLOBAL IMPORTS */
 

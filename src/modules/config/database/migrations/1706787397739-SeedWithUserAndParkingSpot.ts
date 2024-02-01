@@ -13,6 +13,10 @@ export class SeedWithUser1706787397739 implements MigrationInterface {
     await queryRunner.query(
       `INSERT INTO parking_spots (name) VALUES ('Sample Parking Spot')`,
     );
+
+    await queryRunner.query(
+      `INSERT INTO parking_spots (name) VALUES ('Sample Parking Spot 2')`,
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {}

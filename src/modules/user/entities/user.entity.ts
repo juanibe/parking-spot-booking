@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { BookingEntity } from 'src/modules/booking/entities/booking.entity';
+import { BookingEntity } from '../../booking/entities/booking.entity';
 import { RoleEnum } from '../enum';
 
 /* GLOBAL IMPORTS */

@@ -9,7 +9,13 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  ApiForbiddenResponse,
+  ApiHeaders,
+  ApiOkResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
 /* GLOBAL IMPORTS */
 import { Auth } from '../auth/decorator/auth.decorator';
@@ -27,11 +33,24 @@ export class BookingController {
   constructor(private readonly bookingService: BookingService) {}
 
   @Get()
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiOkResponse({ type: BookingEntity })
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async getAllBookings(): Promise<any[]> {
     return await this.bookingService.getAllBookings();
   }
 
   @Get(':bookingId')
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async getBookingById(
     @Param('bookingId', ParseIntPipe) bookingId: number,
   ): Promise<BookingEntity> {
@@ -39,6 +58,12 @@ export class BookingController {
   }
 
   @Post()
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async createBooking(
     @Auth() user: any,
     @Body() input: CreateBookingInputDto,
@@ -47,6 +72,12 @@ export class BookingController {
   }
 
   @Put(':bookingId')
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async editBookingById(
     @Body() input: any,
     @Param('bookingId', ParseIntPipe) bookingId: number,
@@ -55,6 +86,12 @@ export class BookingController {
   }
 
   @Delete(':bookingId')
+  @ApiHeaders([{ name: 'api_token', description: 'Api token to authenticate' }])
+  @ApiUnauthorizedResponse({
+    status: 401,
+    description: 'Unauthorized:ApiTokenNotProvidedOrInvalid',
+  })
+  @ApiForbiddenResponse({ status: 403, description: 'Forbidden' })
   async deleteBookingById(
     @Param('bookingId', ParseIntPipe) bookingId: number,
   ): Promise<any> {
