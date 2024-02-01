@@ -8,6 +8,12 @@
 $ npm install
 ```
 
+## Build the app
+
+```bash
+$ npm run build
+```
+
 ## Run migrations
 
 ```bash
