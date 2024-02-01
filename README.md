@@ -8,6 +8,12 @@
 $ npm install
 ```
 
+## Run migrations
+
+```bash
+$ npm run migration:run
+```
+
 ## Running the app
 
 ```bash
@@ -22,6 +28,8 @@ $ npm run start:prod
 ```
 
 ## Users
+
+After running migrations, the system will automatically create two users and a default Parking Spot.
 
 **Admin User**
 
