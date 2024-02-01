@@ -53,7 +53,19 @@ A default Parking Spot with ID 1 will be created.
 
 ## Accessing API
 
-The Swagger Documentation and API endpoints can be accessed through the /api route.
+- The Swagger Documentation and API endpoints can be accessed through the /api route.
+- API requests can be made through the following link to [Postman](https://api.postman.com/collections/23196460-e431cacf-ed7f-4f85-ac26-248d8099c17e?access_key=PMAT-01HNJJ3FHFNSVC12TE5HQM7X5F) to test and visualize responses.
+
+## Environment file
+
+For optimal setup, ensure you have an environment file at the root level.
+
+1. Create an environment file named .env at the root of your project.
+2. Add any necessary environment variables in this file, such as API keys, database connection strings, etc.
+
+### Environment file example
+
+There is an _.env.example_ file that can be used as a reference
 
 ## Node Version
 
